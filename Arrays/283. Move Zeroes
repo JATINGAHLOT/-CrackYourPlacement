@@ -1,0 +1,18 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int lastNonZeroFoundAt = 0;
+
+        // Move all the non-zero elements to the front of the array
+        for (int current = 0; current < nums.size(); current++) {
+            if (nums[current] != 0) {
+                nums[lastNonZeroFoundAt++] = nums[current];
+            }
+        }
+
+        // Fill the remaining elements with 0s
+        for (int i = lastNonZeroFoundAt; i < nums.size(); i++) {
+            nums[i] = 0;
+        }
+    }
+};
