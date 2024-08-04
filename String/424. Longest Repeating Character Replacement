@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int characterReplacement(string s, int k) {
+         int n = s.length();
+    int maxLength = 0;
+    int start = 0;
+    unordered_map<char, int> charCount;
+
+    int maxCount = 0;
+
+    for (int end = 0; end < n; ++end) {
+        charCount[s[end]]++;
+        maxCount = max(maxCount, charCount[s[end]]);
+
+        while (end - start + 1 - maxCount > k) {
+            charCount[s[start]]--;
+            start++;
+        }
+
+        maxLength = max(maxLength, end - start + 1);
+    }
+
+    return maxLength;
+
+    }
+};
